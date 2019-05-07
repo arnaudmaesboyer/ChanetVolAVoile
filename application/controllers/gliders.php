@@ -23,21 +23,16 @@ class Gliders extends CI_Controller {
 	 {
 		 parent::__construct();
 		 $this->load->database();
-		$this->load->helper(array('url', 'assets'));
 	 }
 	 
 	 public function index()
 	 {
-		 $this->affichage();
-	 }
- 
-	public function affichage()
-	{
-        $this->load->model('gliders');
-		$resultat = $this->gliders->liste_gliders();
-	    var_dump($resultat);
+		$data=array();
+		$this->load->model('gliders_model');
+		$data['planeurs'] = $this->gliders_model->liste_gliders();
 		$this->load->view('header');
-		$this->load->view('viewGliders', 'resultat'));
+		$this->load->view('viewGliders', $data);
 		$this->load->view('footer');
-	}
+		 
+	 }
 }

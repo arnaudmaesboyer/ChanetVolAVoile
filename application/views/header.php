@@ -24,7 +24,7 @@
                       <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo site_url('gliders') ?>">Nos planeurs</a>
+                      <a class="nav-link" href="<?php //echo site_url('gliders') ?>././Gliders">Nos planeurs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="viewMoniteurs.html">Nos moniteurs</a>

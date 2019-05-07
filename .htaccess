@@ -1,0 +1,13 @@
+RewriteEngine on
+
+  RewriteCond $1  !^(index\.php|images|lists|eshots|useruploads|temp|SpryAssets|css|js|robots\.txt|timthumb\.php)
+
+  RewriteRule ^(.*)$ /index.php?$1 [L]
+
+  <IfModule mod_security.c>
+
+  SecFilterEngine Off
+
+  SecFilterScanPOST Off
+
+  </IfModule>

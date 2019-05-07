@@ -24,4 +24,11 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_page');
 		$this->load->view('footer');
 	}
+
+	public function lol()
+	{
+		$this->load->view('header');
+		echo 'salut lol';
+		$this->load->view('footer');
+	}
 }
