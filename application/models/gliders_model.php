@@ -18,4 +18,8 @@ public function liste_gliders()
 			->get()
 			->result();
 }
+public function liste_gliders_ajax(){
+	$hasil=$this->db->get('glider');
+	return $hasil->result();
+}
 }

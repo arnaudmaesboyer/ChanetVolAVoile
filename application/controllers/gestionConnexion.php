@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Gliders extends CI_Controller {
+class GestionConnexion extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -22,22 +22,17 @@ class Gliders extends CI_Controller {
 	 public function __construct()
 	 {
 		 parent::__construct();
-		 $this->load->database();
+         $this->load->database();
+         $this->load->model('gestionConnexion_model');
 	 }
 	 
 	 public function index()
 	 {
-		$data=array();
-		$this->load->model('gliders_model');
-		$data['planeurs'] = $this->gliders_model->liste_gliders();
-		$this->load->view('header');
-		$this->load->view('viewGliders', $data);
-		$this->load->view('footer');
+		echo("coucou");
 		 
 	 }
-	 public function affichageAjax(){
-		$this->load->model('gliders_model');
-		$data= $this->gliders_model->liste_gliders_ajax();
+	 public function InscriptionAjax(){
+		$data= $this->gestionConnexion_model->inscriptionClient();
 		echo json_encode($data);
 	 }
 }

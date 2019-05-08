@@ -21,16 +21,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="<?php echo site_url()?>">Accueil<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php //echo site_url('gliders') ?>././Gliders">Nos planeurs</a>
+                      <a class="nav-link" onclick="loadGliders()">Nos planeurs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewMoniteurs.html">Nos moniteurs</a>
+                        <a class="nav-link" onclick="loadMonitor()">Nos moniteurs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Vol d'initiation</a>
+                        <a class="nav-link"onclick="loadInitiation()">Vol d'initiation</a>
                     </li>
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,7 +48,7 @@
                     </li>
                   </ul>
                   <form class="form-inline">
-                      <button class="btn btn-outline-success" type="button">S'inscrire</button>
+                      <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#exampleModal">S'inscrire</button>
                       <button class="btn btn-sm btn-outline-secondary" type="button">S'identifer</button>
                     </form>
                   <!-- Si personne connecté : 
@@ -68,8 +68,84 @@
                 
                 </div>
               </nav>
-              <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Formulaire d'inscription</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="Username" placeholder="Email">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="Password" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Prenom</label>
+      <input type="text" class="form-control" id="FirstName" placeholder="Prenom">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Nom</label>
+      <input type="text" class="form-control" id="LastName" placeholder="Nom">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPhone">Telephone</label>
+    <input type="text" class="form-control" id="Phone" placeholder="0600000000">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="Street" placeholder="1234 Main St">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="City" placeholder="Montpellier">
+    </div>
+    <div class="form-group col-md-4">
+    <label for="inputCPP">CodePOstal</label>
+      <input type="text" class="form-control" id="PostalCode" placeholder="34000">
+    </div>
+  </div>
+  <div class="form-group">
+  <label for="inputDate">Date de naissance</label>
+  <input type="date" id="Birthday">
+    </div>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-primary" id="btn_save" >M'inscrire</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="././assets/javascript/vue.js"></script>
 </head>
