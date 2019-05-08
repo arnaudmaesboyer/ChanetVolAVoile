@@ -149,7 +149,7 @@ function loadInitiation(){
                     for(i=0; i<data.length; i++){                      
                         html+=  '<a href="#" class="list-group-item list-group-item-action active">'+
                               '<div class="d-flex w-100 justify-content-between">'+
-                                '<h5 class="mb-1">'+ data[i].ApplianceUsed+'</h5>'+
+                                '<h5 class="mb-1" onclick=loadGlider(this)>'+ data[i].ApplianceUsed+'</h5>'+
                               '</div>'+
                               '<p class="mb-1">'+data[i].Description+'</p>'+
                               '<small> prix :'+ data[i].Price +'</small>'+
@@ -184,6 +184,48 @@ $('#btn_save').on('click',function(){
             });
             return false;
         });
+
+ //function show selected product
+ function loadGlider(e){
+                document.getElementById('affichageBase').style.display="none";
+
+                var idGlid= e.getAttribute('Registration');
+
+                  $.ajax({
+                    type : 'GET',
+                    async : true,
+                    url: '<?php echo site_url('gliders/afficher_idGlid')?>',
+                    data: 'Registration='+ idGlid,
+                    dataType : 'text',
+                    success: function(s) {
+
+                      var root = "<?php echo site_url('product/afficher_idGlid/')?>";//manque controller
+                      var newS= s.substr(1,s.length-2);
+                      var adr = root.concat(newS);
+                    $.ajax({
+                        type  : 'GET',
+                        url   : adr,
+                        async : true,
+                        dataType : 'json',
+                        success : function(data){
+                            var html = '';
+                            html +='<div class="row no-gutters">'+
+                                      '<div class="col-6 col-md-4">'+
+                                        '<img src="assets/image/alliance.jpg" class="rounded float-left" alt="Alliance">'+
+                                      '</div>'+
+                                      '<div class="col-12 col-sm-6 col-md-8">'+
+                                        '<p class="font-weight-bold">Pain au chocolat</p>'+
+                                        '<p class="font-weight-normal">Non ergo erunt homines deliciis diffluentes audiendi, si quando de amicitia, quam nec usu </p>'+
+                                      '</div>'+
+                                      '</div>';
+
+                            $('#liste').html(html);
+                        }
+
+                    });
+                  }
+                });
+          }
 </script>
 <div>
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>

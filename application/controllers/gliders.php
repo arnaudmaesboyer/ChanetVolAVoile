@@ -23,12 +23,12 @@ class Gliders extends CI_Controller {
 	 {
 		 parent::__construct();
 		 $this->load->database();
+		 $this->load->model('gliders_model');
 	 }
 	 
 	 public function index()
 	 {
 		$data=array();
-		$this->load->model('gliders_model');
 		$data['planeurs'] = $this->gliders_model->liste_gliders();
 		$this->load->view('header');
 		$this->load->view('viewGliders', $data);
@@ -36,8 +36,10 @@ class Gliders extends CI_Controller {
 		 
 	 }
 	 public function affichageAjax(){
-		$this->load->model('gliders_model');
 		$data= $this->gliders_model->liste_gliders_ajax();
 		echo json_encode($data);
 	 }
+	 public function afficher_idGlid(){
+		echo json_encode($_GET['Registration']);
+	  }
 }
