@@ -47,30 +47,35 @@
                       <a class="nav-link disabled" href="#">Disabled</a>
                     </li>
                   </ul>
-                  <form class="form-inline">
-                      <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#exampleModal">S'inscrire</button>
-                      <button class="btn btn-sm btn-outline-secondary" type="button">S'identifer</button>
-                    </form>
-                  <!-- Si personne connecté : 
+                  <?php if (!$isAdmin){
+                    ?>  <form class="form-inline">
+                        <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#inscrire">S'inscrire</button>
+                        <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="modal" data-target="#identifier">S'identifer</button>
+                        </form>
+                  <?php 
+                  } ?>
+                    <?php if ($isAdmin){
+                    ?> 
                     <li class="nav-item dropdown form-inline">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            NomPersonne Identifié
+                            Mon compte
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Mon Profil</a>
+                          <a class="dropdown-item" onclick="chargementInfoPerso()">Mes Informations</a>
                           <a class="dropdown-item" href="#">Mes Réservations</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Deconnexion</a>
+                          <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionConnexion/deconnecter">Deconnexion</a>
                         </div>
                     </li>
-                    -->
+                     <?php } ?>
+                  
 
                 
                 </div>
               </nav>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="inscrire" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -80,7 +85,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <form>
+      <form id="inscriptionForm">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
@@ -132,9 +137,39 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="identifier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">S'identifier</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="connexionForm">
+          <div class="form-group">
+            <label for="identifiant">Nom Utilisateur(email)</label>
+            <input type="email" class="form-control" id="identifiant" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="password">Mot de Passe</label>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary">S'identifier</button>
+        </form>
+      </div>
+     <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" onclick=window.location.href="http://localhost/ChanetVolAVoile/connexion">S'identifier</button>
+      </div> -->
+    </div>
+  </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
-
 
 
 

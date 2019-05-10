@@ -11,7 +11,7 @@ class Monitor_model extends CI_Model
   }
 
 public function liste_monitor_ajax(){
-	$hasil=$this->db->get('monitor');
+  $hasil=$this->db->get('monitor');
 	return $hasil->result();
 }
 }

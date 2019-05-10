@@ -1,12 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+include(APPPATH . 'modules/ADMINISTRATOR_Controller.php');
+class Welcome extends ADMINISTRATOR_Controller {
+	
+
+	public function __construct()
+	 {
+		 parent::__construct();
+		 $this->load->library('encrypt');
+		 $this->load->helper('cookie');
+	 }
 
 	public function index()
 	{
-		$this->load->view('header');
-		$this->load->view('welcome_page');
-		$this->load->view('footer');
+		
+		$data['isAdmin'] = parent::isAdmin();
+		var_dump($data); 
+		$this->load->view('header', $data);
+		$this->load->view('welcome_page', $data);
+		$this->load->view('footer', $data);
 	}
 }
