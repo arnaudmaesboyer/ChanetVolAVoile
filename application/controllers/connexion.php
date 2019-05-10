@@ -9,7 +9,7 @@ class Connexion extends ADMINISTRATOR_Controller {
     }
     
     function index() {
-        redirect(site_url("welcome"));
+        $this->load->view('connexion');
     }
     
 }

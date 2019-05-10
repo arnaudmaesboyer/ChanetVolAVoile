@@ -1,8 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-include(APPPATH . 'modules/ADMINISTRATOR_Controller.php');
-class Gliders extends ADMINISTRATOR_Controller {
+class Gliders extends CI_Controller {
 
 	public function __construct()
 	 {

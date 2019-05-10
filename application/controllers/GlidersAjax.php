@@ -1,8 +1,8 @@
 <?php
 ('BASEPATH') OR exit('No direct script access allowed');
 
-include(APPPATH . 'modules/ADMINISTRATOR_Controller.php');
-class GlidersAjax extends ADMINISTRATOR_Controller {
+
+class GlidersAjax extends CI_Controller {
 
 public function __construct()
     {
@@ -12,7 +12,6 @@ public function __construct()
     }
 public function affichageAjax(){
         $data[0]= $this->gliders_model->liste_gliders_ajax();
-        $data[1]= parent::get_is_Admin();
 		echo json_encode($data);
 	 }
 	 public function afficher_idGlid(){

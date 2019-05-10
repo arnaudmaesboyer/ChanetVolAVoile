@@ -50,7 +50,7 @@
                   <?php if (!$isAdmin){
                     ?>  <form class="form-inline">
                         <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#inscrire">S'inscrire</button>
-                        <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="modal" data-target="#identifier">S'identifer</button>
+                        <a class="btn btn-sm btn-outline-secondary" type="a" href="<?php echo site_url("connexion")?>">S'identifer</a>
                         </form>
                   <?php 
                   } ?>

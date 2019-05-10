@@ -194,10 +194,14 @@ $('#connexionForm').submit(function(){
                 dataType : "JSON",
                 data : {identifiant:identifiant , password:password},
                 success: function(data){
-                }
+                  $('#inscrire').modal('hide');
+                },
+                error:function(){
+                 
+            }
                 
             });
-            $('#inscrire').modal('hide');
+            
             return false;
             
         });
@@ -213,11 +217,11 @@ $('#connexionForm').submit(function(){
                   $.ajax({
                     type : 'get',
                     async : true,
-                    url: '<?php echo site_url('gliders/afficher_idGlid')?>',
+                    url: '<?php echo site_url('glidersAjax/afficher_idGlid')?>',
                     data: 'Registration='+ idGlid,
                     dataType : 'text',
                     success: function(s) {
-                      var root = "<?php echo site_url('gliders/glidersInfo/')?>";
+                      var root = "<?php echo site_url('glidersAjax/glidersInfo/')?>";
                       var newS= s.substr(1,s.length-2);
                       var adr = root.concat(newS);
                     $.ajax({
