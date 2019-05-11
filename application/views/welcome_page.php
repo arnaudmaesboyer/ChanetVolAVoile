@@ -165,8 +165,8 @@ $('#inscriptionForm').submit(function(){
             var LastName = $('#LastName').val();
             var Phone = $('#Phone').val();
             var Birthday= $('#Birthday').val();
-            var Username= $('#Username').val();
-            var Password= $('#Password').val();
+            var mail= $('#mail').val();
+            var password= $('#password').val();
             var Street= $('#Street').val();
             var PostalCode= $('#PostalCode').val();
             var City= $('#City').val();
@@ -174,7 +174,7 @@ $('#inscriptionForm').submit(function(){
                 type : "POST",
                 url  : "<?php echo site_url('gestionConnexion/InscriptionAjax')?>",
                 dataType : "JSON",
-                data : {FirstName:FirstName , LastName:LastName, Phone:Phone , Birthday:Birthday, Username: Username, Password: Password, Street: Street, PostalCode : PostalCode, City: City},
+                data : {FirstName:FirstName , LastName:LastName, Phone:Phone , Birthday:Birthday, mail: mail, password: password, Street: Street, PostalCode : PostalCode, City: City},
                 success: function(data){
                     alert("vous etes bien inscrits !");
                 }
@@ -247,6 +247,121 @@ $('#connexionForm').submit(function(){
                   }
                 });
           }
+/*function chargementInfoPersoAdmin(e){
+                document.getElementById('affichageBase').style.display="none";
+                document.getElementById('glider').style.display="none";
+                document.getElementById('liste').style.display="block";
+
+                var mail= e
+                alert(mail);
+                  $.ajax({
+                    type : 'post',
+                    async : true,
+                    url: 'http://localhost/ChanetVolAVoile/monitor/recuperationAjaxId',
+                    data: 'mail='+ mail,
+                    dataType : 'json',
+                    success: function(s) {
+                    $.ajax({
+                        type  : 'post',
+                        url   : 'http://localhost/ChanetVolAVoile/monitor/affichageAjaxInfos',
+                        async : true,
+                        data: 'idMonitor='+ s[0].idMonitor,
+                        dataType : 'json',
+                        success : function(data){
+                            var html = '    <form id="UpdateFormMonitor">'+
+                                              '<div class="form-row">'+
+                                                '<div class="form-group col-md-6">'+
+                                                  '<label for="inputEmail4">Email</label>'+
+                                                  '<input type="email" class="form-control" id="mail" value="'+data[0].mail+'">'+
+                                                '</div>'+
+                                                '<div class="form-group col-md-6">'+
+                                                  '<label for="inputPassword4">Password</label>'+
+                                                  '<input type="password" class="form-control" id="password" >'+
+                                                '</div>'+
+                                              '</div>'+
+                                              '<div class="form-row">'+
+                                                '<div class="form-group col-md-6">'+
+                                                  '<label for="inputEmail4">Prenom</label>'+
+                                                  '<input type="text" class="form-control" id="FirstName" value="'+data[0].FirstName+'">'+
+                                                '</div>'+
+                                                '<div class="form-group col-md-6">'+
+                                                  '<label for="inputPassword4">Nom</label>'+
+                                                  '<input type="text" class="form-control" id="LastName" value="'+data[0].LastName+'">'+
+                                                '</div>'+
+                                              '</div>'+
+                                              '<div class="form-row">'+
+                                              '<div class="form-group col-md-6">'+
+                                                '<label for="inputPhone">Telephone</label>'+
+                                                '<input type="text" class="form-control" id="Phone" value="'+data[0].Phone+'">'+
+                                              '</div>'+
+                                              '<div class="form-group col-md-6">'+
+                                                '<label for="inputAddress">Address</label>'+
+                                                '<input type="text" class="form-control" id="Street" value="'+data[0].Street+'">'+
+                                              '</div></div>'+
+                                            '<div class="form-row">'+
+                                                '<div class="form-group col-md-6">'+
+                                                  '<label for="inputCity">City</label>'+
+                                                  '<input type="text" class="form-control" id="City" value="'+data[0].City+'">'+
+                                                '</div>'+
+                                                '<div class="form-group col-md-4">'+
+                                                '<label for="inputCPP">CodePOstal</label>'+
+                                                  '<input type="text" class="form-control" id="PostalCode" value="'+data[0].PostalCode+'">'+
+                                                '</div>'+
+                                              '</div>'+
+                                              '<div class="form-group">'+
+                                              '<label for="inputDate">Date de naissance</label>'+
+                                              '<input type="date" id="Birthday" value="'+data[0].Birthday+'">'+
+                                                '</div>'+
+                                                '<div class="form-group">'+
+                                              '<label for="inputDate">Date De diplome </label>'+
+                                              '<input type="date" id="dateValidation" value="'+ data[0].GraduationDate+'">'+
+                                                '</div>'+
+                                                '<div class="form-row">'+
+                                                '<div class="form-group col-md-4">'+
+                                                '<label for="inputCPP">nbheureVol</label>'+
+                                                  '<input type="text" class="form-control" id="nbHeureVol" value="'+data[0].FlightTotalHNumbre+'">'+
+                                                '</div></div>'+
+                                                '<input type="text" class="form-control" id="idMonitor" value="'+data[0].idMonitor+'">'+
+                                                '<button type="button" class="btn btn-secondary">Retour</button>'+
+                                                '<button type="submit" class="btn btn-primary">changer infos</button>'+
+                                                  '</form>';
+
+                            $('#liste').html(html);
+                            $('#UpdateFormMonitor').submit(function(){
+            alert("coucou");
+            var FirstName = $('#FirstName').val();
+            var LastName = $('#LastName').val();
+            var Phone = $('#Phone').val();
+            var Birthday= $('#Birthday').val();
+            var Username= $('#mail').val();
+            var Password= $('#password').val();
+            var Street= $('#Street').val();
+            var PostalCode= $('#PostalCode').val();
+            var City= $('#City').val();
+            var GraduationDate= $('#dateValidation').val();
+            var FlightTotalHNumbre= $('#nbHeureVol').val();
+            var idMonitor= $('#idMonitor').val();
+            $.ajax({
+                type : "POST",
+                url  : "<?php //echo site_url('monitor/UpdateAjax')?>",
+                dataType : "JSON",
+                data : {idMonitor: idMonitor, FirstName:FirstName , LastName:LastName, Phone:Phone , Birthday:Birthday, mail: mail, password: password, Street: Street, PostalCode : PostalCode, City: City, GraduationDate:GraduationDate, FlightTotalHNumbre:FlightTotalHNumbre },
+                success: function(data){
+                    alert("Vos information ont bien été mise a jour");
+                }
+
+            });
+            return false;
+        });
+
+                        }
+
+                    });
+                  }
+                });
+
+}*/
+
 </script>
 <div>
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>

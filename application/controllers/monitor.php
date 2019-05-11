@@ -35,4 +35,20 @@ class Monitor extends CI_Controller {
 		$data= $this->monitor_model->liste_monitor_ajax();
 		echo json_encode($data);
 	 }
+	 public function affichageInfos(){
+		$id = $this->input->post('idMonitor');
+		$data= $this->monitor_model->infosMonitor($id);
+	 }
+	 public function recuperationAjaxId(){
+		$mail = $this->input->post('mail');
+		$data= $this->monitor_model->getIdMonitor($mail);
+	 }
+	 public function UpdateAdmin($id){
+		 var_dump($_POST);
+		$data= $this->monitor_model->UpdateMonitor($id);
+		delete_cookie("189CDS8CSDC98JCPDSCDSCDSCDSD8C9SD");
+		delete_cookie("1C89DS7CDS8CD89CSD7CSDDSVDSIJPIOCDS");
+		redirect(site_url('welcome'));
+
+	 }
 }

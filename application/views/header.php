@@ -34,20 +34,17 @@
                     </li>
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        Reserver
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
+                        <a class="dropdown-item" href="#">Reserver un vol</a>
+                        <a class="dropdown-item" href="#">Mes reservations</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link disabled" href="#">Disabled</a>
                     </li>
                   </ul>
-                  <?php if (!$isAdmin){
+                  <?php if (!$isAdmin && !$isClient){
                     ?>  <form class="form-inline">
                         <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#inscrire">S'inscrire</button>
                         <a class="btn btn-sm btn-outline-secondary" type="a" href="<?php echo site_url("connexion")?>">S'identifer</a>
@@ -61,7 +58,21 @@
                             Mon compte
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" onclick="chargementInfoPerso()">Mes Informations</a>
+                          <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionAdmin">Mes Informations</a>
+                          <a class="dropdown-item" href="#">Consulter les réservations</a>'
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionConnexion/deconnecter">Deconnexion</a>
+                        </div>
+                    </li>
+                     <?php } ?>
+                     <?php if ($isClient){
+                    ?> 
+                    <li class="nav-item dropdown form-inline">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mon compte
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionClient">Mes Informations</a>
                           <a class="dropdown-item" href="#">Mes Réservations</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionConnexion/deconnecter">Deconnexion</a>
@@ -89,11 +100,11 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="Username" placeholder="Email">
+      <input type="email" class="form-control" id="mail" placeholder="Email">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="Password" placeholder="Password">
+      <input type="password" class="form-control" id="password" placeholder="Password">
     </div>
   </div>
   <div class="form-row">

@@ -22,7 +22,9 @@ class GestionConnexion extends CI_Controller {
 	 public function __construct()
 	 {
 		 parent::__construct();
-         $this->load->database();
+		 $this->load->database();
+		 $this->load->library('encrypt');
+		 $this->load->helper('cookie');
          $this->load->model('gestionConnexion_model');
 	 }
 	 
@@ -39,11 +41,13 @@ class GestionConnexion extends CI_Controller {
 	 public function deconnecter(){
 		delete_cookie("189CDS8CSDC98JCPDSCDSCDSCDSD8C9SD");
 		delete_cookie("1C89DS7CDS8CD89CSD7CSDDSVDSIJPIOCDS");
+		delete_cookie("289CDS8CSDC98JCPDSCDSCDSCDSD8C9SD");
+		delete_cookie("2C89DS7CDS8CD89CSD7CSDDSVDSIJPIOCDS");
 		redirect(site_url("welcome"));
 
 	}
 	public function encrypter(){
-		$mdp = $this->encrypt->encode("wxcvbn");
+		$mdp = $this->encrypt->encode("qsdfgh");
 		die($mdp);
 	}
 }
