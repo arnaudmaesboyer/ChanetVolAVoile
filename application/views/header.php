@@ -36,9 +36,25 @@
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Reserver
                       </a>
+                      <?php if (!$isAdmin && !$isClient){ ?>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Reserver un vol</a>
-                        <a class="dropdown-item" href="#">Mes reservations</a>
+                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/connexion">Reserver un vol</a>
+                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/connexion">Mes reservations</a>
+                      </div>
+                    <?php } ?>
+                    <?php if ($isAdmin){ ?>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationAdmin/Reservation">Voir les vols reservés</a>
+                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationAdmin/Consultation">Mes reservations</a>
+                      </div>
+                      <?php } ?>
+                    <?php if ($isClient){ ?>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationClient/Reservation">Reserver un vol</a>
+                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationClient/Consultation">Mes reservations</a>
+                      </div>
+              
+                      <?php } ?>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link disabled" href="#">Disabled</a>
