@@ -11,25 +11,17 @@ class ReservationMonitorList_model extends CI_Model
     }
 
   public function infosReservationClient(){
-    $hasil=$this->db->get('reservationcustomer');
-    return $hasil->result();
+    $this->db->select('*'); // Select field 
+    $this->db->from('reservationcustomer as rc'); // from Table1 
+    $this->db->join('glider','rc.Registration = glider.Registration'); // Join table1 with table2 based on the foreign key
+    $this->db->join('person','rc.idCust = person.idCust'); 
+    $res = $this->db->get(); 
+    return $res->result();
   }
   
-  /*public function UpdateClient($id){
-      $data = array(
-              'LastName'  => $_POST['LastName'], 
-              'FirstName'  => $_POST['FirstName'], 
-              'Phone' => $_POST['Phone'],
-              'Birthday' => $_POST['Birthday'],
-              'mail' => $_POST['mail'], 
-              'password' => $this->encrypt->encode( $_POST['password']),
-              'Street'  => $_POST['Street'], 
-              'PostalCode' =>$_POST['PostalCode'], 
-              'City' => $_POST['City'],
-              );
-      
-      $this->db->where('idCust', $id);
-      $this->db->update('person', $data);
-      return $result;
-}*/
+  public function prendreReservation($data)
+  {
+      $this->db->where('idReservCust',$data['idReserv']);
+      $this->db->update('reservationcustomer', $data['idMonitor'][0]);
+  }
 }

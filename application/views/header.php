@@ -44,14 +44,13 @@
                     <?php } ?>
                     <?php if ($isAdmin){ ?>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationAdmin/Reservation">Voir les vols reservés</a>
-                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationAdmin/Consultation">Mes reservations</a>
+                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationMonitorList">Voir les vols reservés</a>
                       </div>
                       <?php } ?>
                     <?php if ($isClient){ ?>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationClient/Reservation">Reserver un vol</a>
-                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationClient/Consultation">Mes reservations</a>
+                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationClient">Reserver un vol</a>
+                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationClient/AffichageReservation">Mes reservations</a>
                       </div>
               
                       <?php } ?>

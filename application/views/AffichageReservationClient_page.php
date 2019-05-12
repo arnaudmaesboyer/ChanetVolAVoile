@@ -1,6 +1,8 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
+<body>
+
+<div class="container">
+
+
 <body>
 <table id="affichageReservation" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
@@ -19,23 +21,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </th>
       <th class="th-sm">Numero de Moniteur
       </th>
+      <th class="th-sm">
+      </th>
     </tr>
   </thead>
   <tbody>
     <?php
-      $i=0;
-      for($i=0; $i< count($infos) ;$i++) {
-        if ($infos[$i]->idMonitor == Null){
-          echo "<tr><td>".$infos[$i]->IdReservCust."</td><td>".$infos[$i]->DateReservClient."</td><td>".
-          $infos[$i]->Registration."</td><td>".$infos[$i]->Type."</td><td>".$infos[$i]->idCust."</td><td>".
-          $infos[$i]->LastName."</td><td><a href='http://localhost/ChanetVolAVoile/ReservationMonitorList/prendreReservation/".$infos[$i]->IdReservCust."'> Je reserve ce vol </a></td></tr>";
-        }
-        else{
-          echo "<tr><td>".$infos[$i]->IdReservCust."</td><td>".$infos[$i]->DateReservClient."</td><td>".
-          $infos[$i]->Registration."</td><td>".$infos[$i]->Type."</td><td>".$infos[$i]->idCust."</td><td>".
-          $infos[$i]->LastName."</td><td>".$infos[$i]->idMonitor."</td></tr>";
-        }
-      } 
+     $i=0;
+     for($i=0; $i< count($reservation) ;$i++) {
+         echo "<tr><td>".$reservation[$i]->IdReservCust."</td><td>".$reservation[$i]->DateReservClient."</td><td>".
+         $reservation[$i]->Registration."</td><td>".$reservation[$i]->Type."</td><td>".$reservation[$i]->idCust."</td><td>".
+         $reservation[$i]->LastName."</td><td>".$reservation[$i]->idMonitor."</td><td><a href='http://localhost/ChanetVolAVoile/ReservationClient/annulerReservation/".$reservation[$i]->IdReservCust."'> Annuler</a></td></tr>";
+       }
     ?>
   </tbody>
   <tfoot>

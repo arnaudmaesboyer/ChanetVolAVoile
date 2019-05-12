@@ -14,7 +14,8 @@ public function liste_gliders()
 
 	return $this->db->select('*')
 			->from($this->table)
-			->order_by('Registration', 'asc')
+      ->order_by('Registration', 'asc')
+      ->where('NbPLace', 2)
 			->get()
 			->result();
 }

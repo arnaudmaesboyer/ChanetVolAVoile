@@ -19,9 +19,18 @@ class ReservationMonitorList extends ADMINISTRATOR_Controller {
 		$data['isAdmin'] = parent::isAdmin();
         $data['isClient'] = parent::isClient();
         $data['infos'] =$this->ReservationMonitorList_model->infosReservationClient();
-		var_dump($data); 
 		$this->load->view('header', $data);
 		$this->load->view('ReservationMonitorList_page', $data);
 		$this->load->view('footer', $data);
+	}
+	public function prendreReservation($idReserv){
+		$data['isAdmin'] = parent::isAdmin();
+		$data['isClient'] = parent::isClient();
+		$this->load->model('monitor_model');
+		$data['idMonitor']= $this->monitor_model->getIdMonitor($data['isAdmin']->mail);
+		$data['idReserv'] = $idReserv;
+		$this->ReservationMonitorList_model->prendreReservation($data);
+		redirect(site_url('ReservationMonitorList'));
+
 	}
 }
