@@ -43,9 +43,13 @@
                       </div>
                     <?php } ?>
                     <?php if ($isAdmin){ ?>
+                     
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationMonitorList">Voir les vols reservés</a>
                       </div>
+                      <li class="nav-item">
+                      <a class="nav-link" href="http://localhost/ChanetVolAVoile/GestionPLaneurs">Gestion des planeurs</a>
+                    </li>
                       <?php } ?>
                     <?php if ($isClient){ ?>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -54,9 +58,6 @@
                       </div>
               
                       <?php } ?>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link disabled" href="#">Disabled</a>
                     </li>
                   </ul>
                   <?php if (!$isAdmin && !$isClient){
@@ -74,7 +75,6 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionAdmin">Mes Informations</a>
-                          <a class="dropdown-item" href="#">Consulter les réservations</a>'
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionConnexion/deconnecter">Deconnexion</a>
                         </div>
@@ -88,7 +88,6 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionClient">Mes Informations</a>
-                          <a class="dropdown-item" href="#">Mes Réservations</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionConnexion/deconnecter">Deconnexion</a>
                         </div>
