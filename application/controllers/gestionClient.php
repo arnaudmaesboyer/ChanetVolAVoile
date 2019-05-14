@@ -33,4 +33,19 @@ class GestionClient extends ADMINISTRATOR_Controller {
        redirect(site_url('welcome'));
 
     }
+    public function AffichageChangePassword(){
+		$data['isAdmin'] = parent::isAdmin();
+		$data['isClient'] = parent::isClient();
+        $this->load->model('client_model');
+        $data['client'] =$this->client_model->getIdClient($data['isClient']->mail);
+		$this->load->view('header', $data);
+		$this->load->view('modifPasswordClient_page', $data);
+		$this->load->view('footer', $data);
+	}
+	public function ChangePassword($id){
+		$data= $this->client_model->ChangePasswordClient($id);
+		delete_cookie("189CDS8CSDC98JCPDSCDSCDSCDSD8C9SD");
+		delete_cookie("1C89DS7CDS8CD89CSD7CSDDSVDSIJPIOCDS");
+		//redirect(site_url('welcome'));
+	}
 }

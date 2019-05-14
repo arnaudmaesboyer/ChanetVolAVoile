@@ -39,4 +39,15 @@ class Client_model extends CI_Model
       $this->db->update('person', $data);
       return $result;
 }
+public function ChangePasswordClient($id){
+  $data = array(
+    'password' => $this->encrypt->encode( $_POST['Password1'])
+  );
+  if  ($_POST['Password1'] ==  $_POST['Password2']){
+    $this->db->where('idCust', $id);
+    $this->db->update('person', $data);
+  }else{
+    alert("les deux mots de passe ne correspondent pas");
+  }
+}
 }

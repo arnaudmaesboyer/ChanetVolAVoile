@@ -28,4 +28,15 @@ public function DeletePlaneur($data)
   {
     $this->db->delete('glider', array('Registration' => $data['Registration']));
   }
+public function AjoutPlaneur(){
+    $data = array(
+        'Registration' => $_POST['Registration'],
+        'Type'  => $_POST['Type'], 
+        'NbPlace'  => $_POST['NbPlace'],
+        'Weight'  => $_POST['Weight'],
+        'Span'  => $_POST['Span'],
+        'Image'  => 'http://locahost/ChanetVolAVoile/assets/image/'.$_POST['Registration'].'.jpg', 
+        );
+      $this->db->insert('glider', $data);
+}
 }

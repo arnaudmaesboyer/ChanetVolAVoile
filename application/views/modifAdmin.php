@@ -10,8 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                   <input type="email" class="form-control" name="mail" value="<?php echo $infos[0]->mail ;?>">
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                  <label for="inputPassword4">Password</label>
-                                                  <input type="password" class="form-control" name="password" >
+                                                <a type="button" class="btn btn-secondary" href="<?php echo site_url('gestionAdmin/AffichageChangePassword') ?>">Changer mot de passe</a>
                                                 </div>
                                               </div>
                                               <div class="form-row">
