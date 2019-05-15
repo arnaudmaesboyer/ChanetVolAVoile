@@ -39,10 +39,10 @@ class GestionPlaneurs extends ADMINISTRATOR_Controller {
         $data['Registration'] = $idPlaneur;
         $this->GestionPlaneurs_model->DeletePlaneur($data);
         
-        $file = 'C:/wamp64/www/ChanetVolAVoile/assets/image/'.$idPlaneur.'.jpg';
+        $file = 'assets/image/'.$idPlaneur.'.jpg';
  
         unlink($file);
-		redirect(site_url('GestionPlaneur/AffichageDeletePlaneur'));
+		redirect(site_url('GestionPlaneurs/AffichageDeletePlaneur'));
     }
     public function AffichageAjoutPlaneur(){
         $data['isAdmin'] = parent::isAdmin();

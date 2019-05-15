@@ -10,10 +10,11 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
             
                 <title>ChanetVolAVoile</title>
+                <link rel="icon" type="image/png" href="<?php echo site_url('assets/image/paper-plane.png')?> "/>
 
 	
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Chanet Vol à Voile</a>
+                <a class="navbar-brand"  href="<?php echo site_url()?>">Chanet Vol à Voile</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -75,6 +76,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionAdmin">Mes Informations</a>
+                          <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/AffichageErreur">Voir les logs d'erreurs</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionConnexion/deconnecter">Deconnexion</a>
                         </div>
@@ -194,17 +196,202 @@
     </div>
   </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+function loadGliders(){
+    $.ajax({
+                type  : 'ajax',
+                url   : '<?php echo site_url('glidersAjax/affichageAjax')?>',
+                async : true,
+                dataType : 'json',
+                success : function(data){
+                  document.getElementById('affichageBase').style.display="none";
+                  document.getElementById('liste').style.display="none";
+                  document.getElementById('glider').style.display="none";
+                    var html = '<div class="row justify-content-md-center">'+
+                                '<h1>Nos Planeurs</h1>'+
+                              '</div>';
+                    var i;
+                    for(i=0; i<data[0].length; i++){
+                      if(i%3==0){
+                        html+='<div class="row">';
+                      }                        
+                        html+= '<div class="col-4">'+
+                            '<div class="thumbnail">'+
+                              '<img src='+ data[0][i].Image+' alt="Lights" style="width:100%">'+
+                                '<div class="caption">'+
+                                  '<h3 onclick=loadGlider(this) id="' + data[0][i].Registration + '"> '+data[0][i].Type+ '</h3>'+
+                                '</div>'+
+                            '</div>'+
+                          '</div>';
+                      if(i%3==2 ){
+                        html+='</div>';
+                      }    
+                    }
+                    $('#liste').html(html);
+                    document.getElementById('liste').style.display="block";
+                }
+ 
+            });
+}
+function loadMonitor(){
+  $.ajax({
+                type  : 'ajax',
+                url   : '<?php echo site_url('monitor')?>',
+                async : true,
+                dataType : 'json',
+                success : function(data){
+                  document.getElementById('affichageBase').style.display="none";
+                  document.getElementById('glider').style.display="none";
+                    var html = '<div class="row justify-content-md-center">'+
+                                '<h1>Nos Moniteurs</h1>'+
+                              '</div>';
+                    var i;
+                    for(i=0; i<data.length; i++){
+                      if(i%4==0){
+                        html+='<div class="row">';
+                      }                        
+                        html+= '<div class="col-3">'+
+                            '<div class="thumbnail">'+
+                              '<img src='+ data[i].Image+' alt="Lights" style="width:100%">'+
+                                '<div class="caption">'+
+                                  '<h3> Nom : '+data[i].LastName+ ' ' + data[i].FirstName + '</h3>'+
+                                  '<ul class="list-group">'+
+                                    '<li class="list-group-item"> Date d\'obtention du diplome de moniteur : '+data[i].GraduationDate+'</li>'+
+                                    '<li class="list-group-item"> Nombre total d\'heure de vol :' +data[i].FlightTotalHNumbre+' h </li>'+
+                                  '</ul>'+
+                                '</div>'+
+                            '</div>'+
+                          '</div>';
+                      if(i%4==3 ){
+                        html+='</div>';
+                      }    
+                    }
+                    $('#liste').html(html);
+                }
+ 
+            });
+}
+function loadInitiation(){
+  $.ajax({
+                type  : 'ajax',
+                url   : '<?php echo site_url('initiation')?>',
+                async : true,
+                dataType : 'json',
+                success : function(data){
+                  document.getElementById('affichageBase').style.display="none";
+                  document.getElementById('glider').style.display="none";
+                    var html = '<div class="list-group">'+
+                                '<h1>Les vols d\'initiations proposés</h1>'+
+                              '</div>';
+                    var i;
+                    for(i=0; i<data.length; i++){                      
+                        html+=  '<a href="#" class="list-group-item list-group-item-action active">'+
+                              '<div class="d-flex w-100 justify-content-between">'+
+                                '<h5 class="mb-1" onclick=loadGlider(this)>'+ data[i].ApplianceUsed+'</h5>'+
+                              '</div>'+
+                              '<p class="mb-1">'+data[i].Description+'</p>'+
+                              '<small> prix :'+ data[i].Price +'</small>'+
+                            '</a>';
+                    }
+                    $('#liste').html(html);
+                }
+ 
+            });
+
+}
+//inscription
+$('#inscriptionForm').submit(function(){
+            var FirstName = $('#FirstName').val();
+            var LastName = $('#LastName').val();
+            var Phone = $('#Phone').val();
+            var Birthday= $('#Birthday').val();
+            var mail= $('#mail').val();
+            var password= $('#password').val();
+            var Street= $('#Street').val();
+            var PostalCode= $('#PostalCode').val();
+            var City= $('#City').val();
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo site_url('gestionConnexion/InscriptionAjax')?>",
+                dataType : "JSON",
+                data : {FirstName:FirstName , LastName:LastName, Phone:Phone , Birthday:Birthday, mail: mail, password: password, Street: Street, PostalCode : PostalCode, City: City},
+                success: function(data){
+                    alert("vous etes bien inscrits !");
+                }
+
+            });
+            $('#inscrire').modal('hide');
+            return false;
+        });
+
+//connexion
+$('#connexionForm').submit(function(){
+            var identifiant = $('#identifiant').val();
+            var password = $('#password').val();
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo site_url('connexion')?>",
+                dataType : "JSON",
+                data : {identifiant:identifiant , password:password},
+                success: function(data){
+                  $('#inscrire').modal('hide');
+                },
+                error:function(){
+                 
+            }
+                
+            });
+            
+            return false;
+            
+        });
 
 
 
+ //function show selected product
+ function loadGlider(e){
+                document.getElementById('liste').style.display="none";
+                document.getElementById('glider').style.display="block";
+
+                var idGlid= e.getAttribute('id');
+                  $.ajax({
+                    type : 'get',
+                    async : true,
+                    url: '<?php echo site_url('glidersAjax/afficher_idGlid')?>',
+                    data: 'Registration='+ idGlid,
+                    dataType : 'text',
+                    success: function(s) {
+                      var root = "<?php echo site_url('glidersAjax/glidersInfo/')?>";
+                      var newS= s.substr(1,s.length-2);
+                      var adr = root.concat(newS);
+                    $.ajax({
+                        type  : 'get',
+                        url   : adr,
+                        async : true,
+                        dataType : 'json',
+                        success : function(data){
+                            var html = '<div class="media mt-5 mb-5">'+
+                                        '<img src='+ data[0].Image+' class="mr-3" alt="...">'+
+                                        '<div class="media-body">'+
+                                        '<h5 class="mt-5">'+ data[0].Type+' : </h5>'+
+                                        '<p class="mt-5">Nombre de place : '+data[0].NbPlace+'</p>'+
+                                        '<p class="mt-5">Poids : '+data[0].Weight+'</p>'+
+                                        '<p class="mt-5">Envergure : '+data[0].Span+'</p>'+
+                                        '<button type="button" class="btn btn-secondary btn-sm mt-5" onclick=loadGliders()> Retour aux planeurs</button>'+
+                                        '</div>'+
+                                        '</div>';
+                            $('#glider').html(html);
+                        }
+
+                    });
+                  }
+                });
+          }
 
 
-
-
-
-
-
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

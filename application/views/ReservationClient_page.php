@@ -3,11 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <body>
 
-<div class="container">
-
 <?php 
    //var_dump($gliders[0]->Registration);
 ?>
+<div class="container" id="affichageBase">
 <form  action= "<?php echo site_url('reservationCLient/reserver')?>" method='post'>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -31,4 +30,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
 
 </div>
+<div class="container" id="liste"></div>
+<div class="container" id="glider"></div>
 

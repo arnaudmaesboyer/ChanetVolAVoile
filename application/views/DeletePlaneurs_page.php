@@ -2,14 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<body>
-
-
-
 <?php 
    //var_dump($planeurs);
 ?>
-<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5" id="affichageBase">
 <table id="affichageReservation" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
     <tr>
@@ -58,8 +54,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </tr>
   </tfoot>
 </table>
-
-
+</div>
+<div class="container" id="liste"></div>
+<div class="container" id="glider"></div>
 <script>
 $(document).ready(function () {
     $('#affichageReservation').DataTable({
@@ -70,5 +67,3 @@ $(document).ready(function () {
 </script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js" ></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" >
-
-</div>

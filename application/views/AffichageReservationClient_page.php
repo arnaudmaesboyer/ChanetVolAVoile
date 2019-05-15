@@ -1,6 +1,6 @@
 <body>
 
-<div class="container">
+<div class="container" id="affichageBase">
 
 
 <body>
@@ -54,7 +54,9 @@
     </tr>
   </tfoot>
 </table>
-
+</div>
+<div class="container" id="liste"></div>
+<div class="container" id="glider"></div>
 
 <script>
 $(document).ready(function () {

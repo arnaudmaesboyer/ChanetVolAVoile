@@ -1,6 +1,6 @@
 
     <h1>Login</h1>
-    <div id="body">
+    <div id="contrainer" id="affichageBase">
         <form action="<?=site_url("connexion")?>" method="post" >
             <p>Identifiant :</p>
             <code><input type="text" name="identifiant" value="" /></code>
@@ -10,3 +10,5 @@
             <input type="submit" name="login" value="Connexion">
         </form>
     </div>
+    <div class="container" id="liste"></div>
+<div class="container" id="glider"></div>

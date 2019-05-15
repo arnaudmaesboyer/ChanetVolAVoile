@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<body>
+
+<div class="container" id="affichageBase"></div>
 <form action="<?php echo site_url("GestionPlaneurs/AjoutPlaneur") ?>" method="post" enctype="multipart/form-data">
 <div class="row">
     <div class="col">
@@ -34,3 +35,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
   <button type="submit" class="btn btn-primary" value="upload">Submit</button>
 </form>
+</div>
+<div class="container" id="liste"></div>
+<div class="container" id="glider"></div>

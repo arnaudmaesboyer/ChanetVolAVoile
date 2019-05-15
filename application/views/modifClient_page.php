@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <body>
 
+<div class="container" id="affichageBase">
 <form action="<?php echo base_url('gestionClient/UpdateClient/'.$client[0]->idCust.'')?>" method="post">
                                               <div class="form-row">
                                                 <div class="form-group col-md-6">
@@ -51,5 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <button type="submit" class="btn btn-primary">changer infos</button>
                                                   </form>
 
-
+</div>
+<div class="container" id="liste"></div>
+<div class="container" id="glider"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>

@@ -36,7 +36,6 @@ class Administrator_model extends CI_Model {
 
     public function isAdmin($mail){
         $user = $this->db->select(array('mail'))->get_where($this->_table, array('mail' => $mail))->row();
-        var_dump($user);
         if (isset($user)){
             return $user;
         }else {
@@ -45,7 +44,6 @@ class Administrator_model extends CI_Model {
     }
     public function isClient($mail){
         $user = $this->db->select(array('mail'))->get_where($this->_tableClient, array('mail' => $mail))->row();
-        var_dump($user);
         if (isset($user)){
             return $user;
         }else {

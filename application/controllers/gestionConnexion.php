@@ -47,7 +47,7 @@ class GestionConnexion extends CI_Controller {
 
 	}
 	public function encrypter(){
-		$mdp = $this->encrypt->encode("azerty");
+		$mdp = $this->encrypt->encode("mlkjhgfdsq");
 		die($mdp);
 	}
 }

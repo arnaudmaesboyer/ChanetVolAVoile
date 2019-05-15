@@ -77,7 +77,8 @@ class ADMINISTRATOR_Controller extends CI_Controller {
             $password = $this->encrypt->decode(get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_password));
             if ($this->administrator_model->validate($mail, $password) == FALSE){
                 //redirect(site_url("connexion")); 
-            }     // Mauvais identifiant, ont redirige vers la page de connexion
+            }
+          // Mauvais identifiant, ont redirige vers la page de connexion
             
         }
         elseif (get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_nameClient, TRUE) &&
@@ -88,6 +89,14 @@ class ADMINISTRATOR_Controller extends CI_Controller {
             if ($this->administrator_model->validateClient($mailClient, $passwordClient) == FALSE){
                 //redirect(site_url("connexion")); 
             }     // Mauvais identifiant, ont redirige vers la page de connexion
+            elseif ($this->router->fetch_class() == "welcome"  || $this->router->fetch_class() == "ReservationClient" || $this->router->fetch_class() == "gestionClient" ) 
+        {
+        
+        }
+            elseif ($this->router->fetch_class() != "connexion") 
+            {
+                redirect(site_url("connexion")); // Mauvais identifiant, ont redirige vers la page de connexion
+            }
             
         }
         elseif ($this->router->fetch_class() == "welcome" ) 
@@ -95,10 +104,10 @@ class ADMINISTRATOR_Controller extends CI_Controller {
         
         }
 
-        /*elseif ($this->router->fetch_class() != "connexion") 
+        elseif ($this->router->fetch_class() != "connexion") 
         {
             redirect(site_url("connexion")); // Mauvais identifiant, ont redirige vers la page de connexion
-        }*/
+        }
        
     }
     

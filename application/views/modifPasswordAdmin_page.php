@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <body>
 <?php var_dump($admin[0]->idMonitor);   ?>
+<div class="container" id="affichageBase">
 <form action="<?php echo base_url('gestionAdmin/ChangePassword/'.$admin[0]->idMonitor.'')?>" method="post">
 
 <div class="form-group">
@@ -16,6 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <button type="button" class="btn btn-secondary">Retour</button>
         <button type="submit" class="btn btn-primary">Confirmer changement mot de passe</button>
 </form>
-
-
+</div>
+<div class="container" id="liste"></div>
+<div class="container" id="glider"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
