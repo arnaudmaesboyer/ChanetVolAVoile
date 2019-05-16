@@ -8,7 +8,7 @@ class ChercherGlider extends ADMINISTRATOR_Controller {
 	public function __construct()
 	 {
 		 parent::__construct();
-		 $this->load->library('encrypt');
+		 $this->load->library('encryption');
 		 $this->load->helper('cookie');
 		 $this->load->model('ChercherGlider_model');
 	 }

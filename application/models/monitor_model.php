@@ -8,7 +8,7 @@ class Monitor_model extends CI_Model
     {
       parent::__construct();
       $this->load->database();
-      $this->load->library('encrypt');
+      $this->load->library('encryption');
     }
 
   public function liste_monitor_ajax(){
@@ -47,7 +47,7 @@ class Monitor_model extends CI_Model
 }
   public function ChangePasswordMonitor($id){
       $data = array(
-        'password' => $this->encrypt->encode( $_POST['Password1'])
+        'password' => $this->encryption->encode( $_POST['Password1'])
       );
       if  ($_POST['Password1'] ==  $_POST['Password2']){
         $this->db->where('idMonitor', $id);

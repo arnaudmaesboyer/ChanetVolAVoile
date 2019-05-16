@@ -8,7 +8,7 @@ class Client_model extends CI_Model
     {
       parent::__construct();
       $this->load->database();
-      $this->load->library('encrypt');
+      $this->load->library('encryption');
     }
 
   public function infosClient($data){
@@ -29,7 +29,7 @@ class Client_model extends CI_Model
               'Phone' => htmlspecialchars($_POST['Phone']),
               'Birthday' => htmlspecialchars($_POST['Birthday']),
               'mail' => htmlspecialchars($_POST['mail']), 
-              'password' => htmlspecialchars($this->encrypt->encode( $_POST['password'])),
+              'password' => htmlspecialchars($this->encryption->encode( $_POST['password'])),
               'Street'  => htmlspecialchars($_POST['Street']), 
               'PostalCode' =>htmlspecialchars($_POST['PostalCode']), 
               'City' => htmlspecialchars($_POST['City']),
@@ -41,7 +41,7 @@ class Client_model extends CI_Model
 }
 public function ChangePasswordClient($id){
   $data = array(
-    'password' => $this->encrypt->encode( $_POST['Password1'])
+    'password' => $this->encryption->encode( $_POST['Password1'])
   );
   if  ($_POST['Password1'] ==  $_POST['Password2']){
     $this->db->where('idCust', $id);

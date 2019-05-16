@@ -6,7 +6,7 @@ class Administrator_model extends CI_Model {
     private $_tableClient = "person";
     
     function __construct() {
-        $this->load->library('encrypt');
+        $this->load->library('encryption');
     }
     
     public function validate($mail, $password) {
@@ -18,7 +18,7 @@ class Administrator_model extends CI_Model {
     private function _getUser($mail) {
         $user = $this->db->select(array('mail', 'password'))->get_where($this->_table, array('mail' => $mail))->row();
         if (isset($user->password))
-            return $this->encrypt->decode($user->password);
+            return $this->encryption->decode($user->password);
         return false;
     }
     public function validateClient($mail, $password) {
@@ -30,7 +30,7 @@ class Administrator_model extends CI_Model {
     private function _getUserClient($mail) {
         $user = $this->db->select(array('mail', 'password'))->get_where($this->_tableClient, array('mail' => $mail))->row();
         if (isset($user->password))
-            return $this->encrypt->decode($user->password);
+            return $this->encryption->decode($user->password);
         return false;
     }
 

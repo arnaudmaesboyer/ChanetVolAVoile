@@ -8,7 +8,7 @@ class ChercherGlider_model extends CI_Model
     {
       parent::__construct();
       $this->load->database();
-      $this->load->library('encrypt');
+      $this->load->library('encryption');
     }
 
 public function RechercheGlider($ecriture){

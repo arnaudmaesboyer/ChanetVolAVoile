@@ -6,7 +6,7 @@ class GestionConnexion_model extends CI_Model
   {
     parent::__construct();
     $this->load->database();
-    $this->load->library('encrypt');
+    $this->load->library('encryption');
   }
 
 public function InscriptionClient(){
@@ -16,7 +16,7 @@ public function InscriptionClient(){
                 'Phone' => htmlspecialchars($this->input->post('Phone')),
                 'Birthday' => htmlspecialchars($this->input->post('Birthday')),
                 'mail' => htmlspecialchars($this->input->post('mail')), 
-                'password' =>htmlspecialchars($this->encrypt->encode( $this->input->post('password'))),
+                'password' =>htmlspecialchars($this->encryption->encode( $this->input->post('password'))),
                 'Street'  => htmlspecialchars($this->input->post('Street')), 
                 'PostalCode' => htmlspecialchars($this->input->post('PostalCode')), 
                 'City' => htmlspecialchars($this->input->post('City')),
