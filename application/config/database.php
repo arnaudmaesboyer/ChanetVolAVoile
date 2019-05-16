@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/Add this to fetch the CLEARDB_DATABASE_URL
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 /*
 | -------------------------------------------------------------------
