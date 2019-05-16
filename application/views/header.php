@@ -39,23 +39,23 @@
                       </a>
                       <?php if (!$isAdmin && !$isClient){ ?>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/connexion">Reserver un vol</a>
-                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/connexion">Mes reservations</a>
+                        <a class="dropdown-item" href="<?php echo site_url("connexion")?>">Reserver un vol</a>
+                        <a class="dropdown-item" href="<?php echo site_url("connexion")?>">Mes reservations</a>
                       </div>
                     <?php } ?>
                     <?php if ($isAdmin){ ?>
                      
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationMonitorList">Voir les vols reservés</a>
+                        <a class="dropdown-item" href="<?php echo site_url("ReservationMonitorList")?>">Voir les vols reservés</a>
                       </div>
                       <li class="nav-item">
-                      <a class="nav-link" href="http://localhost/ChanetVolAVoile/GestionPLaneurs">Gestion des planeurs</a>
+                      <a class="nav-link" href="<?php echo site_url("GestionPLaneurs")?>">Gestion des planeurs</a>
                     </li>
                       <?php } ?>
                     <?php if ($isClient){ ?>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationClient">Reserver un vol</a>
-                        <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/ReservationClient/AffichageReservation">Mes reservations</a>
+                        <a class="dropdown-item" href="<?php echo site_url("ReservationClient")?>">Reserver un vol</a>
+                        <a class="dropdown-item" href="<?php echo site_url("ReservationClient/AffichageReservation")?>">Mes reservations</a>
                       </div>
               
                       <?php } ?>
@@ -75,10 +75,10 @@
                             Mon compte
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionAdmin">Mes Informations</a>
-                          <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/AffichageErreur">Voir les logs d'erreurs</a>
+                          <a class="dropdown-item" href="<?php echo site_url("gestionAdmin")?>">Mes Informations</a>
+                          <a class="dropdown-item" href="<?php echo site_url("AffichageErreur")?>">Voir les logs d'erreurs</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionConnexion/deconnecter">Deconnexion</a>
+                          <a class="dropdown-item" href="<?php echo site_url("GestionConnexion/deconnecter")?>">Deconnexion</a>
                         </div>
                     </li>
                      <?php } ?>
@@ -89,9 +89,9 @@
                             Mon compte
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionClient">Mes Informations</a>
+                          <a class="dropdown-item" href="<?php echo site_url("gestionClient")?>">Mes Informations</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="http://localhost/ChanetVolAVoile/gestionConnexion/deconnecter">Deconnexion</a>
+                          <a class="dropdown-item" href="<?php echo site_url("GestionConnexion/deconnecter")?>">Deconnexion</a>
                         </div>
                     </li>
                      <?php } ?>

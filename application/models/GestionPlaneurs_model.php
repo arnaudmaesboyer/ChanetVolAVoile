@@ -35,7 +35,7 @@ public function AjoutPlaneur(){
         'NbPlace'  => htmlspecialchars($_POST['NbPlace']),
         'Weight'  => htmlspecialchars($_POST['Weight']),
         'Span'  => htmlspecialchars($_POST['Span']),
-        'Image'  => 'http://locahost/ChanetVolAVoile/assets/image/'.$_POST['Registration'].'.jpg', 
+        'Image'  => site_url('assets/image/').$_POST['Registration'].'.jpg', 
         );
       $this->db->insert('glider', $data);
 }

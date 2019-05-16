@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        
           echo "<tr><td>".$planeurs[$i]->Registration."</td><td>".$planeurs[$i]->Type."</td><td>".
           $planeurs[$i]->NbPlace."</td><td>".$planeurs[$i]->Weight."</td><td>".$planeurs[$i]->Span."</td><td><img width=\" 100 %\"src=\"".
-          $planeurs[$i]->Image."\"</td><td><a href='http://localhost/ChanetVolAVoile/GestionPlaneurs/DeletePlaneur/".$planeurs[$i]->Registration."'> Supprimer ce planeur </a></td></tr>";
+          $planeurs[$i]->Image."\"</td><td><a href=".site_url("GestionPlaneurs/DeletePlaneur/").$planeurs[$i]->Registration."> Supprimer ce planeur </a></td></tr>";
         
       } 
     ?>
@@ -61,10 +61,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script>
 $(document).ready(function () {
     $('#affichageReservation').DataTable({
-    "searching": true // false to disable search (or any other option)
-    });
+    "searching": true, // false to disable search (or any other option)
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tous"]],
+    "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"}
+  });
+
+
     $('.dataTables_length').addClass('bs-select');
-    });
+
+  });
 </script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js" ></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" >

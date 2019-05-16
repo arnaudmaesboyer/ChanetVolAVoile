@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         if ($infos[$i]->idMonitor == Null){
           echo "<tr><td>".$infos[$i]->IdReservCust."</td><td>".$infos[$i]->DateReservClient."</td><td>".
           $infos[$i]->Registration."</td><td>".$infos[$i]->Type."</td><td>".$infos[$i]->idCust."</td><td>".
-          $infos[$i]->LastName."</td><td><a href='http://localhost/ChanetVolAVoile/ReservationMonitorList/prendreReservation/".$infos[$i]->IdReservCust."'> Je reserve ce vol </a></td></tr>";
+          $infos[$i]->LastName."</td><td><a href=".site_url('ReservationMonitorList/prendreReservation/').$infos[$i]->IdReservCust."> Je reserve ce vol </a></td></tr>";
         }
         else{
           echo "<tr><td>".$infos[$i]->IdReservCust."</td><td>".$infos[$i]->DateReservClient."</td><td>".
@@ -64,10 +64,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script>
 $(document).ready(function () {
     $('#affichageReservation').DataTable({
-    "searching": true // false to disable search (or any other option)
-    });
+    "searching": true, // false to disable search (or any other option)
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tous"]],
+    "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"}
+  });
+
+
     $('.dataTables_length').addClass('bs-select');
-    });
+
+  });
 </script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js" ></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" >
