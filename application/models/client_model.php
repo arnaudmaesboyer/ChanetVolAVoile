@@ -24,15 +24,15 @@ class Client_model extends CI_Model
   }
   public function UpdateClient($id){
       $data = array(
-              'LastName'  => $_POST['LastName'], 
-              'FirstName'  => $_POST['FirstName'], 
-              'Phone' => $_POST['Phone'],
-              'Birthday' => $_POST['Birthday'],
-              'mail' => $_POST['mail'], 
-              'password' => $this->encrypt->encode( $_POST['password']),
-              'Street'  => $_POST['Street'], 
-              'PostalCode' =>$_POST['PostalCode'], 
-              'City' => $_POST['City'],
+              'LastName'  => htmlspecialchars($_POST['LastName']), 
+              'FirstName'  => htmlspecialchars($_POST['FirstName']), 
+              'Phone' => htmlspecialchars($_POST['Phone']),
+              'Birthday' => htmlspecialchars($_POST['Birthday']),
+              'mail' => htmlspecialchars($_POST['mail']), 
+              'password' => htmlspecialchars($this->encrypt->encode( $_POST['password'])),
+              'Street'  => htmlspecialchars($_POST['Street']), 
+              'PostalCode' =>htmlspecialchars($_POST['PostalCode']), 
+              'City' => htmlspecialchars($_POST['City']),
               );
       
       $this->db->where('idCust', $id);

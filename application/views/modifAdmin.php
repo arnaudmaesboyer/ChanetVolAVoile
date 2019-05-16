@@ -59,6 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <button type="submit" class="btn btn-primary">changer infos</button>
                                                   </form>
 </div>
+<div class="container" id="search"></div>
 <div class="container" id="liste"></div>
 <div class="container" id="glider"></div>
 

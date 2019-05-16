@@ -13,5 +13,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <a type="button" class="btn btn-secondary btn-lg btn-block" href="<?php echo site_url('GestionPlaneurs/AffichageDeletePlaneur') ?>">Supprimer un planeur</a>
 
 </div>
+<div class="container" id="search"></div>
 <div class="container" id="liste"></div>
 <div class="container" id="glider"></div>

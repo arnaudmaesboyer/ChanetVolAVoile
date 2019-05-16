@@ -29,6 +29,7 @@
   </tfoot>
 </table>
 </div>
+<div class="container" id="search"></div>
 <div class="container" id="liste"></div>
 <div class="container" id="glider"></div>
 

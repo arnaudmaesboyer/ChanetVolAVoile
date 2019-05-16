@@ -17,8 +17,8 @@ class ReservationClient_model extends CI_Model
     var_dump($id['idClient'][0]->idCust);
     $data = array(
         'idCust' => $id['idClient'][0]->idCust,
-        'DateReservClient'  => $_POST['dateReserv'], 
-        'Registration'  => $_POST['SelectGliders'], 
+        'DateReservClient'  => htmlspecialchars($_POST['dateReserv']), 
+        'Registration'  => htmlspecialchars($_POST['SelectGliders']), 
         );
       $this->db->insert('reservationcustomer', $data);
   }

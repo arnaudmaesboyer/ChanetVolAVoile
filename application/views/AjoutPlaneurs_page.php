@@ -36,5 +36,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <button type="submit" class="btn btn-primary" value="upload">Submit</button>
 </form>
 </div>
+<div class="container" id="search"></div>
 <div class="container" id="liste"></div>
 <div class="container" id="glider"></div>

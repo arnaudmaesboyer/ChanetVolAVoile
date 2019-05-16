@@ -209,9 +209,12 @@ function loadGliders(){
                   document.getElementById('affichageBase').style.display="none";
                   document.getElementById('liste').style.display="none";
                   document.getElementById('glider').style.display="none";
-                    var html = '<div class="row justify-content-md-center">'+
+                  var search = '<div class="row justify-content-md-center">'+
                                 '<h1>Nos Planeurs</h1>'+
-                              '</div>';
+                              '</div>'+
+                              '<label> Recherche : </label>'+
+                              '<input type="search" id="gliderSearch" name="q"aria-label="chercher">';
+                    var html = '';
                     var i;
                     for(i=0; i<data[0].length; i++){
                       if(i%3==0){
@@ -229,12 +232,50 @@ function loadGliders(){
                         html+='</div>';
                       }    
                     }
+                    $('#search').html(search);
                     $('#liste').html(html);
+                    document.getElementById('search').style.display="block";
                     document.getElementById('liste').style.display="block";
+                    $('#gliderSearch').keyup(function(){
+                      var text = $('#gliderSearch').val();
+                      if (text==""){
+                            text="1234";
+                      }
+                      var adr = "<?php echo site_url('ChercherGlider/recherche/')?>";
+                      var url2 = adr+text;
+                              $.ajax({
+                                  type : "get",
+                                  url  : url2,
+                                  dataType : "JSON",
+                                  success: function(data){
+                                    document.getElementById('glider').style.display="none";
+                                    var html = '';
+                    var i;
+                    for(i=0; i<data["glider"].length; i++){
+                      if(i%3==0){
+                        html+='<div class="row">';
+                      }                        
+                        html+= '<div class="col-4">'+
+                            '<div class="thumbnail">'+
+                              '<img src='+ data["glider"][i]["Image"]+' alt="Lights" style="width:100%">'+
+                                '<div class="caption">'+
+                                  '<h3 onclick=loadGlider(this) id="' + data["glider"][i]["Registration"] + '"> '+data["glider"][i]['Type']+ '</h3>'+
+                                '</div>'+
+                            '</div>'+
+                          '</div>';
+                      if(i%3==2 ){
+                        html+='</div>';
+                      }    
+                    }
+                              $('#liste').html(html);
+                                  }
+            });
+});
                 }
  
             });
 }
+
 function loadMonitor(){
   $.ajax({
                 type  : 'ajax',
@@ -319,9 +360,10 @@ $('#inscriptionForm').submit(function(){
                 data : {FirstName:FirstName , LastName:LastName, Phone:Phone , Birthday:Birthday, mail: mail, password: password, Street: Street, PostalCode : PostalCode, City: City},
                 success: function(data){
                     alert("vous etes bien inscrits !");
+                    
+                   
                 }
-
-            });
+              });
             $('#inscrire').modal('hide');
             return false;
         });
@@ -354,6 +396,7 @@ $('#connexionForm').submit(function(){
  function loadGlider(e){
                 document.getElementById('liste').style.display="none";
                 document.getElementById('glider').style.display="block";
+                document.getElementById('search').style.display="none";
 
                 var idGlid= e.getAttribute('id');
                   $.ajax({

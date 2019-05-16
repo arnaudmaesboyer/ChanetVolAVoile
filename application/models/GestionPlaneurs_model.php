@@ -11,15 +11,15 @@ class GestionPlaneurs_model extends CI_Model
 
 public function InscriptionClient(){
         $data = array(
-                'LastName'  => $this->input->post('LastName'), 
-                'FirstName'  => $this->input->post('FirstName'), 
-                'Phone' => $this->input->post('Phone'),
-                'Birthday' => $this->input->post('Birthday'),
-                'mail' => $this->input->post('mail'), 
-                'password' =>$this->encrypt->encode( $this->input->post('password')),
-                'Street'  => $this->input->post('Street'), 
-                'PostalCode' => $this->input->post('PostalCode'), 
-                'City' => $this->input->post('City'),
+                'LastName'  => htmlspecialchars($this->input->post('LastName')), 
+                'FirstName'  => htmlspecialchars($this->input->post('FirstName')), 
+                'Phone' => htmlspecialchars($this->input->post('Phone')),
+                'Birthday' => htmlspecialchars($this->input->post('Birthday')),
+                'mail' => htmlspecialchars($this->input->post('mail')), 
+                'password' =>htmlspecialchars($this->encrypt->encode( $this->input->post('password'))),
+                'Street'  => htmlspecialchars($this->input->post('Street')), 
+                'PostalCode' => htmlspecialchars($this->input->post('PostalCode')), 
+                'City' => htmlspecialchars($this->input->post('City')),
             );
         $result=$this->db->insert('person',$data);
         return $result;
@@ -30,11 +30,11 @@ public function DeletePlaneur($data)
   }
 public function AjoutPlaneur(){
     $data = array(
-        'Registration' => $_POST['Registration'],
-        'Type'  => $_POST['Type'], 
-        'NbPlace'  => $_POST['NbPlace'],
-        'Weight'  => $_POST['Weight'],
-        'Span'  => $_POST['Span'],
+        'Registration' => htmlspecialchars($_POST['Registration']),
+        'Type'  => htmlspecialchars($_POST['Type']), 
+        'NbPlace'  => htmlspecialchars($_POST['NbPlace']),
+        'Weight'  => htmlspecialchars($_POST['Weight']),
+        'Span'  => htmlspecialchars($_POST['Span']),
         'Image'  => 'http://locahost/ChanetVolAVoile/assets/image/'.$_POST['Registration'].'.jpg', 
         );
       $this->db->insert('glider', $data);

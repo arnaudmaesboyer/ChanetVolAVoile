@@ -13,7 +13,6 @@ class AffichageErreur extends ADMINISTRATOR_Controller {
 
 	public function index()
 	{
-		
 		$data['isAdmin'] = parent::isAdmin();
 		$data['isClient'] = parent::isClient();
 		$data['erreur']= $this->AffichageErreur_model->getErreur();

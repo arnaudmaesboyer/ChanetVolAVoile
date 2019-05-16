@@ -29,16 +29,16 @@ class Monitor_model extends CI_Model
   public function UpdateMonitor($id){
       //$id= $this->input->post('idMonitor');
       $data = array(
-              'LastName'  => $_POST['LastName'], 
-              'FirstName'  => $_POST['FirstName'], 
-              'Phone' => $_POST['Phone'],
-              'Birthday' => $_POST['Birthday'],
-              'mail' => $_POST['mail'], 
-              'Street'  => $_POST['Street'], 
-              'PostalCode' =>$_POST['PostalCode'], 
-              'City' => $_POST['City'],
-              'GraduationDate' => $_POST['GraduationDate'],
-              'FlightTotalHNumbre' => $_POST['FlightTotalHNumbre'],
+              'LastName'  => htmlspecialchars($_POST['LastName']), 
+              'FirstName'  =>htmlspecialchars( $_POST['FirstName']), 
+              'Phone' => htmlspecialchars($_POST['Phone']),
+              'Birthday' =>htmlspecialchars( $_POST['Birthday']),
+              'mail' => htmlspecialchars($_POST['mail']), 
+              'Street'  => htmlspecialchars($_POST['Street']), 
+              'PostalCode' =>htmlspecialchars($_POST['PostalCode']), 
+              'City' => htmlspecialchars($_POST['City']),
+              'GraduationDate' => htmlspecialchars($_POST['GraduationDate']),
+              'FlightTotalHNumbre' => htmlspecialchars($_POST['FlightTotalHNumbre']),
               );
       
       $this->db->where('idMonitor', $id);

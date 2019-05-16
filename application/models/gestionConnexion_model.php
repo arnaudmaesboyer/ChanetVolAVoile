@@ -11,15 +11,15 @@ class GestionConnexion_model extends CI_Model
 
 public function InscriptionClient(){
         $data = array(
-                'LastName'  => $this->input->post('LastName'), 
-                'FirstName'  => $this->input->post('FirstName'), 
-                'Phone' => $this->input->post('Phone'),
-                'Birthday' => $this->input->post('Birthday'),
-                'mail' => $this->input->post('mail'), 
-                'password' =>$this->encrypt->encode( $this->input->post('password')),
-                'Street'  => $this->input->post('Street'), 
-                'PostalCode' => $this->input->post('PostalCode'), 
-                'City' => $this->input->post('City'),
+                'LastName'  => htmlspecialchars($this->input->post('LastName')), 
+                'FirstName'  => htmlspecialchars($this->input->post('FirstName')), 
+                'Phone' => htmlspecialchars($this->input->post('Phone')),
+                'Birthday' => htmlspecialchars($this->input->post('Birthday')),
+                'mail' => htmlspecialchars($this->input->post('mail')), 
+                'password' =>htmlspecialchars($this->encrypt->encode( $this->input->post('password'))),
+                'Street'  => htmlspecialchars($this->input->post('Street')), 
+                'PostalCode' => htmlspecialchars($this->input->post('PostalCode')), 
+                'City' => htmlspecialchars($this->input->post('City')),
             );
         $result=$this->db->insert('person',$data);
         return $result;
