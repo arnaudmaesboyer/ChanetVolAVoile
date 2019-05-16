@@ -8,7 +8,7 @@ class Welcome extends Administrator_Controller {
 	public function __construct()
 	 {
 		 parent::__construct();
-		 $this->load->library('encrypt');
+		 $this->load->library('encryption');
 		 $this->load->helper('cookie');
 	 }
 

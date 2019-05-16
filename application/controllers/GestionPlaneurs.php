@@ -8,7 +8,7 @@ class GestionPlaneurs extends ADMINISTRATOR_Controller {
 	public function __construct()
 	 {
 		 parent::__construct();
-         $this->load->library('encrypt');
+         $this->load->library('encryption');
          $this->load->helper(array('form', 'url'));
          $this->load->helper('cookie');
          $this->load->model('GestionPlaneurs_model');
