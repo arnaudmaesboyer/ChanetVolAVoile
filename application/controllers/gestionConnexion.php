@@ -23,7 +23,7 @@ class GestionConnexion extends CI_Controller {
 	 {
 		 parent::__construct();
 		 $this->load->database();
-		 $this->load->library('encrypt');
+		 $this->load->library('encryption');
 		 $this->load->helper('cookie');
          $this->load->model('gestionConnexion_model');
 	 }
@@ -47,7 +47,7 @@ class GestionConnexion extends CI_Controller {
 
 	}
 	public function encrypter(){
-		$mdp = $this->encrypt->encode("mlkjhgfdsq");
+		$mdp = $this->encryption->encrypt("mlkjhgfdsq");
 		die($mdp);
 	}
 }

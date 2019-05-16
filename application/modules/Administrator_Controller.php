@@ -30,14 +30,14 @@ class ADMINISTRATOR_Controller extends CI_Controller {
             {
                 $cookies_identifiant = $this->_cookie;
                 $cookies_identifiant['name'] = $this->_cookie_id_name;
-                $cookies_identifiant['value'] = $this->encryption->encode($this->input->post('identifiant'));
+                $cookies_identifiant['value'] = $this->encryption->encrypt($this->input->post('identifiant'));
                 // $cookies_identifiant['domain'] = "";
                 $cookies_identifiant['prefix'] = $this->config->item('cookie_prefix');
                 set_cookie($cookies_identifiant);
 
                 $cookies_password = $this->_cookie;
                 $cookies_password['name'] = $this->_cookie_id_password;
-                $cookies_password['value'] = $this->encryption->encode($this->input->post('password'));
+                $cookies_password['value'] = $this->encryption->encrypt($this->input->post('password'));
                 // $cookies_identifiant['domain'] = "";
                 $cookies_password['prefix'] = $this->config->item('cookie_prefix');
                 set_cookie($cookies_password);
@@ -49,14 +49,14 @@ class ADMINISTRATOR_Controller extends CI_Controller {
             elseif($this->administrator_model->validateClient($this->input->post('identifiant'), $this->input->post('password'))){
                 $cookies_identifiant = $this->_cookie;
                 $cookies_identifiant['name'] = $this->_cookie_id_nameClient;
-                $cookies_identifiant['value'] = $this->encryption->encode($this->input->post('identifiant'));
+                $cookies_identifiant['value'] = $this->encryption->encrypt($this->input->post('identifiant'));
                 // $cookies_identifiant['domain'] = "";
                 $cookies_identifiant['prefix'] = $this->config->item('cookie_prefix');
                 set_cookie($cookies_identifiant);
 
                 $cookies_password = $this->_cookie;
                 $cookies_password['name'] = $this->_cookie_id_passwordClient;
-                $cookies_password['value'] = $this->encryption->encode($this->input->post('password'));
+                $cookies_password['value'] = $this->encryption->encrypt($this->input->post('password'));
                 // $cookies_identifiant['domain'] = "";
                 $cookies_password['prefix'] = $this->config->item('cookie_prefix');
                 set_cookie($cookies_password);

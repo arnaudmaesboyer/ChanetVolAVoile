@@ -47,7 +47,7 @@ class Monitor_model extends CI_Model
 }
   public function ChangePasswordMonitor($id){
       $data = array(
-        'password' => $this->encryption->encode( $_POST['Password1'])
+        'password' => $this->encryption->encrypt( $_POST['Password1'])
       );
       if  ($_POST['Password1'] ==  $_POST['Password2']){
         $this->db->where('idMonitor', $id);
