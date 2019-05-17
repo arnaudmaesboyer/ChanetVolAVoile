@@ -33,7 +33,7 @@ class ReservationClient_model extends CI_Model
   }
   public function annulerReservation($data)
   {
-    $this->db->delete('reservationcustomer', array('idReservCust' => $data['idReserv']));
+    $this->db->delete('reservationcustomer', array('IdReservCust' => $data['idReserv']));
   }
   
 }
