@@ -65,7 +65,7 @@ class GestionPlaneurs extends Administrator_Controller {
 
                 $this->upload->do_upload('Image');
         $this->GestionPlaneurs_model->AjoutPlaneur();
-        redirect(site_url("GestionPlaneur"));
+        redirect(site_url("GestionPlaneurs"));
 
         
     }
