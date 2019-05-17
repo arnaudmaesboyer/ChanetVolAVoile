@@ -16,8 +16,6 @@ class ChercherGlider extends CI_Controller {
 	{
     }
     public function recherche($ecriture){
-        $data['isAdmin'] = parent::isAdmin();
-        $data['isClient'] = parent::isClient();
         if($ecriture == "1234"){
             $data['glider'] =$this->ChercherGlider_model->RechercheGlider("");
     
