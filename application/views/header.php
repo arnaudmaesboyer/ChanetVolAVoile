@@ -283,6 +283,7 @@ function loadMonitor(){
                 async : true,
                 dataType : 'json',
                 success : function(data){
+                  document.getElementById('search').style.display="none";
                   document.getElementById('affichageBase').style.display="none";
                   document.getElementById('glider').style.display="none";
                     var html = '<div class="row justify-content-md-center">'+
@@ -321,6 +322,7 @@ function loadInitiation(){
                 async : true,
                 dataType : 'json',
                 success : function(data){
+                  document.getElementById('search').style.display="none";
                   document.getElementById('affichageBase').style.display="none";
                   document.getElementById('glider').style.display="none";
                     var html = '<div class="list-group">'+

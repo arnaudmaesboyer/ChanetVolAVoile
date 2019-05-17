@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    //var_dump($gliders[0]->Registration);
 ?>
 <div class="container" id="affichageBase">
-<form  action= "<?php echo site_url('reservationCLient/reserver')?>" method='post'>
+<form  action= "<?php echo site_url('reservationClient/reserver')?>" method='post'>
   <div class="form-row">
     <div class="form-group col-md-6">
     <label for="dateReservation">Choississez votre date</label>
