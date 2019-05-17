@@ -73,8 +73,8 @@ class Administrator_Controller extends CI_Controller {
         elseif (get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_name, TRUE) &&
                 get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_password, TRUE))
         {
-            $mail = $this->encryption->decode(get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_name));
-            $password = $this->encryption->decode(get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_password));
+            $mail = $this->encryption->decrypt(get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_name));
+            $password = $this->encryption->decrypt(get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_password));
             if ($this->administrator_model->validate($mail, $password) == FALSE){
                 //redirect(site_url("connexion")); 
             }
@@ -84,8 +84,8 @@ class Administrator_Controller extends CI_Controller {
         elseif (get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_nameClient, TRUE) &&
                 get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_passwordClient, TRUE))
         {
-            $mailClient = $this->encryption->decode(get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_nameClient));
-            $passwordClient = $this->encryption->decode(get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_passwordClient));
+            $mailClient = $this->encryption->decrypt(get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_nameClient));
+            $passwordClient = $this->encryption->decrypt(get_cookie($this->config->item('cookie_prefix').$this->_cookie_id_passwordClient));
             if ($this->administrator_model->validateClient($mailClient, $passwordClient) == FALSE){
                 //redirect(site_url("connexion")); 
             }     // Mauvais identifiant, ont redirige vers la page de connexion
