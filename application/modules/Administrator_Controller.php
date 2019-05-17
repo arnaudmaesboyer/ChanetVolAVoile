@@ -114,7 +114,7 @@ class Administrator_Controller extends CI_Controller {
 	public function isAdmin(){
         $test= $this->input->cookie("189CDS8CSDC98JCPDSCDSCDSCDSD8C9SD");
         if(isset($test)){
-        $mail = $this->encryption->decode($this->input->cookie("189CDS8CSDC98JCPDSCDSCDSCDSD8C9SD"));
+        $mail = $this->encryption->decrypt($this->input->cookie("189CDS8CSDC98JCPDSCDSCDSCDSD8C9SD"));
         $this->load->model("Administrator_model");
         return $this->Administrator_model->isAdmin($mail);
         }
