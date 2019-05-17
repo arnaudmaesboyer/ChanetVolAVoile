@@ -46,8 +46,8 @@ class GestionConnexion extends CI_Controller {
 		redirect(site_url("welcome"));
 
 	}
-	public function encrypter($mdp){
-		$mdp = $this->encryption->encrypt($mdp);
+	public function encrypter(){
+		$mdp = $this->encryption->encrypt("azerty");
 		die($mdp);
 	}
 }

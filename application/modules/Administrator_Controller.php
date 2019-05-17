@@ -28,7 +28,6 @@ class Administrator_Controller extends CI_Controller {
         {
             if ($this->administrator_model->validate($this->input->post('identifiant'), $this->input->post('password')))
             {
-                var_dump($this->input->post('identifiant'));
                 $cookies_identifiant = $this->_cookie;
                 $cookies_identifiant['name'] = $this->_cookie_id_name;
                 $cookies_identifiant['value'] = $this->encryption->encrypt($this->input->post('identifiant'));
@@ -42,7 +41,6 @@ class Administrator_Controller extends CI_Controller {
                 // $cookies_identifiant['domain'] = "";
                 $cookies_password['prefix'] = $this->config->item('cookie_prefix');
                 set_cookie($cookies_password);
-                var_dump("jai mis le cookie");
                 
                 // Tout est ok, ont redirige vers la page d'accueil de l'admin
                 redirect(site_url("welcome"));
