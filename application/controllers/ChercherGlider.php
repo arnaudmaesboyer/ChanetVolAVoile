@@ -1,8 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-include(APPPATH . 'modules/Administrator_Controller.php');
-class ChercherGlider extends Administrator_Controller {
+class ChercherGlider extends CI_Controller {
 	
 
 	public function __construct()

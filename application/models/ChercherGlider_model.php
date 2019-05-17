@@ -2,7 +2,6 @@
 
 class ChercherGlider_model extends CI_Model
 {
-	protected $table = 'person';
 
   public function __construct()
     {
