@@ -17,7 +17,6 @@ class GestionAdmin extends Administrator_Controller {
 	{
 		
         $data['isAdmin'] = parent::isAdmin();
-        var_dump($data['isAdmin']);
 		$data['isClient'] = parent::isClient();
         
         $data['admin'] =$this->monitor_model->getIdMonitor($data['isAdmin']->mail);
