@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$url = parse_url(getenv("DATABASE_URL"));
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
