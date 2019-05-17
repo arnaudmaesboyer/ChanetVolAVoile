@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-include(APPPATH . 'modules/ADMINISTRATOR_Controller.php');
-class GestionPlaneurs extends ADMINISTRATOR_Controller {
+include(APPPATH . 'modules/Administrator_Controller.php');
+class GestionPlaneurs extends Administrator_Controller {
 	
 
 	public function __construct()
