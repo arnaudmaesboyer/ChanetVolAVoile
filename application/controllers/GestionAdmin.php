@@ -39,6 +39,6 @@ class GestionAdmin extends Administrator_Controller {
 		$data= $this->monitor_model->ChangePasswordMonitor($id);
 		delete_cookie("189CDS8CSDC98JCPDSCDSCDSCDSD8C9SD");
 		delete_cookie("1C89DS7CDS8CD89CSD7CSDDSVDSIJPIOCDS");
-		//redirect(site_url('welcome'));
+		redirect(site_url('welcome'));
 	}
 }
