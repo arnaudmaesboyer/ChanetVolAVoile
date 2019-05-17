@@ -49,7 +49,7 @@
                         <a class="dropdown-item" href="<?php echo site_url("ReservationMonitorList")?>">Voir les vols reservés</a>
                       </div>
                       <li class="nav-item">
-                      <a class="nav-link" href="<?php echo site_url("GestionPLaneurs")?>">Gestion des planeurs</a>
+                      <a class="nav-link" href="<?php echo site_url("GestionPlaneurs")?>">Gestion des planeurs</a>
                     </li>
                       <?php } ?>
                     <?php if ($isClient){ ?>

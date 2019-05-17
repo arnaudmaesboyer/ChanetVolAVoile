@@ -24,7 +24,7 @@ class Administrator_Controller extends CI_Controller {
         $this->load->model('administrator_model');
         
         // if route fetch tu veux aller 
-        if (urldecode($this->input->post('identifiant', TRUE)) && urldecode($this->input->post('password', TRUE))) 
+        if ($this->input->post('identifiant', TRUE) && $this->input->post('password', TRUE)) 
         {
             if ($this->administrator_model->validate($this->input->post('identifiant'), $this->input->post('password')))
             {
