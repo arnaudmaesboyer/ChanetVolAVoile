@@ -21,7 +21,7 @@ class ReservationMonitorList_model extends CI_Model
   
   public function prendreReservation($data)
   {
-      $this->db->where('idReservCust',$data['idReserv']);
+      $this->db->where('IdReservCust',$data['idReserv']);
       $this->db->update('reservationcustomer', $data['idMonitor'][0]);
   }
 }
