@@ -31,7 +31,7 @@
      for($i=0; $i< count($reservation) ;$i++) {
          echo "<tr><td>".$reservation[$i]->IdReservCust."</td><td>".$reservation[$i]->DateReservClient."</td><td>".
          $reservation[$i]->Registration."</td><td>".$reservation[$i]->Type."</td><td>".$reservation[$i]->idCust."</td><td>".
-         $reservation[$i]->LastName."</td><td>".$reservation[$i]->idMonitor."</td><td><a href=".site_url('ReservationClient/annulerReservation/').$reservation[$i]->IdReservCust."'> Annuler</a></td></tr>";
+         $reservation[$i]->LastName."</td><td>".$reservation[$i]->idMonitor."</td><td><a href=".site_url('ReservationClient/annulerReservation/').$reservation[$i]->IdReservCust."> Annuler</a></td></tr>";
        }
     ?>
   </tbody>
