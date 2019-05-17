@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="form-row">
                                                 <div class="form-group col-md-4">
                                                 <label for="inputCPP">nbheureVol</label>
-                                                  <input type="text" class="form-control" name="nbHeureVol" value="<?php echo $infos[0]->FlightTotalHNumbre ;?>">
+                                                  <input type="text" class="form-control" name="nbHeureVol" value="<?php echo $infos[0]->FlightTotalHNumber?>" >
                                                 </div></div>
                                                 <button type="button" class="btn btn-secondary">Retour</button>
                                                 <button type="submit" class="btn btn-primary">changer infos</button>
