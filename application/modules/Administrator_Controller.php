@@ -123,7 +123,7 @@ class Administrator_Controller extends CI_Controller {
     public function isClient(){
         $test= $this->input->cookie("289CDS8CSDC98JCPDSCDSCDSCDSD8C9SD");
         if(isset($test)){
-        $mailClient = $this->encryption->decode($this->input->cookie("289CDS8CSDC98JCPDSCDSCDSCDSD8C9SD"));
+        $mailClient = $this->encryption->decrypt($this->input->cookie("289CDS8CSDC98JCPDSCDSCDSCDSD8C9SD"));
         $this->load->model("Administrator_model");
         return $this->Administrator_model->isClient($mailClient);
         }
