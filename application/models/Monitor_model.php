@@ -37,8 +37,8 @@ class Monitor_model extends CI_Model
               'Street'  => htmlspecialchars($_POST['Street']), 
               'PostalCode' =>htmlspecialchars($_POST['PostalCode']), 
               'City' => htmlspecialchars($_POST['City']),
-              'GraduationDate' => htmlspecialchars($_POST['GraduationDate']),
-              'FlightTotalHNumbre' => htmlspecialchars($_POST['FlightTotalHNumbre']),
+              'GraduationDate' => htmlspecialchars($_POST['dateValidation']),
+              'FlightTotalHNumber' => htmlspecialchars($_POST['nbHeureVol']),
               );
       
       $this->db->where('idMonitor', $id);
@@ -49,11 +49,8 @@ class Monitor_model extends CI_Model
       $data = array(
         'password' => $this->encryption->encrypt( $_POST['Password1'])
       );
-      if  ($_POST['Password1'] ==  $_POST['Password2']){
+
         $this->db->where('idMonitor', $id);
         $this->db->update('monitor', $data);
-      }else{
-        alert("les deux mots de passe ne correspondent pas");
-      }
-  }
+}
 }

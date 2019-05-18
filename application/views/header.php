@@ -116,44 +116,48 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="mail" placeholder="Email">
+      <input type="email" class="form-control" id="mail"  name="mail" placeholder="Email">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Password">
+      <input type="password" class="form-control" id="password"  name="password" placeholder="Password">
     </div>
+  </div>
+  <div class="form-group">
+    <label for="inpassword2">Confirmation mot de passe</label>
+    <input type="password" class="form-control" id="password2" name="password2" placeholder="Password">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Prenom</label>
-      <input type="text" class="form-control" id="FirstName" placeholder="Prenom">
+      <input type="text" class="form-control" id="FirstName"  name="FirstName" placeholder="Prenom">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Nom</label>
-      <input type="text" class="form-control" id="LastName" placeholder="Nom">
+      <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Nom">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPhone">Telephone</label>
-    <input type="text" class="form-control" id="Phone" placeholder="0600000000">
+    <input type="text" class="form-control" id="Phone"  name="Phone" placeholder="0600000000">
   </div>
   <div class="form-group">
     <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="Street" placeholder="1234 Main St">
+    <input type="text" class="form-control" id="Street"  name="Street" placeholder="1234 Main St">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="City" placeholder="Montpellier">
+      <input type="text" class="form-control" id="City" name="City" placeholder="Montpellier">
     </div>
     <div class="form-group col-md-4">
     <label for="inputCPP">CodePOstal</label>
-      <input type="text" class="form-control" id="PostalCode" placeholder="34000">
+      <input type="text" class="form-control" id="PostalCode" name="PostalCode" placeholder="34000">
     </div>
   </div>
   <div class="form-group">
   <label for="inputDate">Date de naissance</label>
-  <input type="date" id="Birthday">
+  <input type="date" id="Birthday"  name="Birthday">
     </div>
     </div>
       <div class="modal-footer">
@@ -325,18 +329,18 @@ function loadInitiation(){
                   document.getElementById('search').style.display="none";
                   document.getElementById('affichageBase').style.display="none";
                   document.getElementById('glider').style.display="none";
-                    var html = '<div class="list-group">'+
+                    var html = '<div class="list-group mt-2 mb-2">'+
                                 '<h1>Les vols d\'initiations proposés</h1>'+
                               '</div>';
                     var i;
                     for(i=0; i<data.length; i++){                      
-                        html+=  '<a href="#" class="list-group-item list-group-item-action active">'+
+                        html+=  '<div class="list-group-item list-group-item-action mt-1 mb-1">'+
                               '<div class="d-flex w-100 justify-content-between">'+
                                 '<h5 class="mb-1" onclick=loadGlider(this)>'+ data[i].ApplianceUsed+'</h5>'+
                               '</div>'+
                               '<p class="mb-1">'+data[i].Description+'</p>'+
                               '<small> prix :'+ data[i].Price +'</small>'+
-                            '</a>';
+                            '</div>';
                     }
                     $('#liste').html(html);
                 }
@@ -352,6 +356,7 @@ $('#inscriptionForm').submit(function(){
             var Birthday= $('#Birthday').val();
             var mail= $('#mail').val();
             var password= $('#password').val();
+            var password2= $('#password2').val();
             var Street= $('#Street').val();
             var PostalCode= $('#PostalCode').val();
             var City= $('#City').val();
@@ -359,10 +364,13 @@ $('#inscriptionForm').submit(function(){
                 type : "POST",
                 url  : "<?php echo site_url('gestionConnexion/InscriptionAjax')?>",
                 dataType : "JSON",
-                data : {FirstName:FirstName , LastName:LastName, Phone:Phone , Birthday:Birthday, mail: mail, password: password, Street: Street, PostalCode : PostalCode, City: City},
+                data : {FirstName:FirstName , LastName:LastName, Phone:Phone , Birthday:Birthday, mail: mail, password: password, password2:password2, Street: Street, PostalCode : PostalCode, City: City},
                 success: function(data){
-                    alert("vous etes bien inscrits !");
-                    
+                    if (data=="erreur"){
+                        alert("Vous avez mal rempli les champs veuillez recommencer");
+                    }else{
+                        alert("Félicitation vous etes bien inscrit");
+                    }
                    
                 }
               });

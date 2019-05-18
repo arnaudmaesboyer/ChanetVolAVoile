@@ -2,16 +2,17 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <body>
-<?php var_dump($admin[0]->idMonitor);   ?>
 <div class="container" id="affichageBase">
 <form action="<?php echo base_url('gestionAdmin/ChangePassword/'.$admin[0]->idMonitor.'')?>" method="post">
 
 <div class="form-group">
-    <label for="Password1">Password</label>
+    <label for="Password1">Mot de passe : </label>
+    <?php echo form_error('password1'); ?>
     <input type="password" class="form-control" name="Password1" placeholder="Password">
   </div>
   <div class="form-group">
-    <label for="Password2">Password</label>
+    <label for="Password2">Confirmation mot de passe : </label>
+    <?php echo form_error('password2'); ?>
     <input type="password" class="form-control" name="Password2" placeholder="Password">
   </div>                                   
         <button type="button" class="btn btn-secondary">Retour</button>

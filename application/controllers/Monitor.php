@@ -1,8 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Monitor extends CI_Controller {
-
+include(APPPATH . 'modules/Administrator_Controller.php');
+class Monitor extends Administrator_Controller {
+	
 	/**
 	 * Index Page for this controller.
 	 *
@@ -23,7 +24,8 @@ class Monitor extends CI_Controller {
 	 {
 		 parent::__construct();
          $this->load->database();
-         $this->load->model('monitor_model');
+		 $this->load->model('monitor_model');
+		 $this->load->library('form_validation');
 	 }
 	 
 	 public function index()
@@ -44,11 +46,35 @@ class Monitor extends CI_Controller {
 		$data= $this->monitor_model->getIdMonitor($mail);
 	 }
 	 public function UpdateAdmin($id){
-		 var_dump($_POST);
-		$data= $this->monitor_model->UpdateMonitor($id);
-		delete_cookie("189CDS8CSDC98JCPDSCDSCDSCDSD8C9SD");
-		delete_cookie("1C89DS7CDS8CD89CSD7CSDDSVDSIJPIOCDS");
-		redirect(site_url('welcome'));
+		$this->form_validation->set_rules('mail', 'Mail', 'required|valid_email');
+		$this->form_validation->set_rules('FirstName', 'FirstName', 'required|alpha');
+		$this->form_validation->set_rules('LastName', 'LastName', 'required|alpha');
+		$this->form_validation->set_rules('Phone', 'Phone', 'required|min_length[10]|max_length[10]|numeric');
+		$this->form_validation->set_rules('Street', 'Street', 'required');
+		$this->form_validation->set_rules('City', 'City', 'required');
+		$this->form_validation->set_rules('PostalCode', 'PostalCode', 'required|min_length[5]|max_length[5]|numeric');
+		$this->form_validation->set_rules('Birthday', 'Birthday', 'required');
+		$this->form_validation->set_rules('dateValidation', 'dateValidation', 'required');
+		$this->form_validation->set_rules('nbHeureVol', 'nbHeureVol', 'required|numeric');
+		if ($this->form_validation->run() == FALSE)
+                {
+					$data['isAdmin'] = parent::isAdmin();
+					$data['isClient'] = parent::isClient();
+					
+					$data['admin'] =$this->monitor_model->getIdMonitor($data['isAdmin']->mail);
+					$data['infos'] =$this->monitor_model->infosMonitor($data['admin'][0]->idMonitor);
+					$this->load->view('header', $data);
+					$this->load->view('modifAdmin', $data);
+					$this->load->view('footer', $data);
+                }
+                else
+                {
+					$data= $this->monitor_model->UpdateMonitor($id);
+					delete_cookie("189CDS8CSDC98JCPDSCDSCDSCDSD8C9SD");
+					delete_cookie("1C89DS7CDS8CD89CSD7CSDDSVDSIJPIOCDS");
+					redirect(site_url('welcome'));
+			 
+                } 
 
 	 }
 }

@@ -25,7 +25,9 @@ class GestionConnexion extends CI_Controller {
 		 $this->load->database();
 		 $this->load->library('encryption');
 		 $this->load->helper('cookie');
-         $this->load->model('gestionConnexion_model');
+		 $this->load->model('gestionConnexion_model');
+		 $this->load->library('form_validation');
+		 
 	 }
 	 
 	 public function index()
@@ -33,10 +35,28 @@ class GestionConnexion extends CI_Controller {
 		echo("coucou");
 		 
 	 }
-	 //penser a chack pas de doublon email
+
 	 public function InscriptionAjax(){
-		$data= $this->gestionConnexion_model->inscriptionClient();
-		echo json_encode($data);
+		$this->form_validation->set_rules('mail', 'Mail', 'required|valid_email');
+		$this->form_validation->set_rules('password', 'password', 'required');
+		$this->form_validation->set_rules('password2', 'Password Confirmation', 'required|max_length[30]|matches[password]');
+		$this->form_validation->set_rules('FirstName', 'FirstName', 'required|alpha');
+		$this->form_validation->set_rules('LastName', 'LastName', 'required|alpha');
+		$this->form_validation->set_rules('Phone', 'Phone', 'required|min_length[10]|max_length[10]|numeric');
+		$this->form_validation->set_rules('Street', 'Street', 'required');
+		$this->form_validation->set_rules('City', 'City', 'required');
+		$this->form_validation->set_rules('PostalCode', 'PostalCode', 'required|min_length[5]|max_length[5]|numeric');
+		$this->form_validation->set_rules('Birthday', 'Birthday', 'required');
+		if ($this->form_validation->run() == FALSE)
+                {
+					echo json_encode("erreur");
+                }
+                else
+                {
+					$data= $this->gestionConnexion_model->inscriptionClient();
+					echo json_encode($data);
+			 
+                }
 	 }
 	 public function deconnecter(){
 		delete_cookie("189CDS8CSDC98JCPDSCDSCDSCDSD8C9SD");

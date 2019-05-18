@@ -55,7 +55,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container" id="glider"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <!--<script type="text/javascript" src="././assets/javascript/ajax.js"></script>-->
-<div>
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-</div>
+
 </body>

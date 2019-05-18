@@ -9,21 +9,6 @@ class GestionPlaneurs_model extends CI_Model
     $this->load->library('encryption');
   }
 
-public function InscriptionClient(){
-        $data = array(
-                'LastName'  => htmlspecialchars($this->input->post('LastName')), 
-                'FirstName'  => htmlspecialchars($this->input->post('FirstName')), 
-                'Phone' => htmlspecialchars($this->input->post('Phone')),
-                'Birthday' => htmlspecialchars($this->input->post('Birthday')),
-                'mail' => htmlspecialchars($this->input->post('mail')), 
-                'password' =>htmlspecialchars($this->encryption->encrypt( $this->input->post('password'))),
-                'Street'  => htmlspecialchars($this->input->post('Street')), 
-                'PostalCode' => htmlspecialchars($this->input->post('PostalCode')), 
-                'City' => htmlspecialchars($this->input->post('City')),
-            );
-        $result=$this->db->insert('person',$data);
-        return $result;
-}
 public function DeletePlaneur($data)
   {
     $this->db->delete('glider', array('Registration' => $data['Registration']));
