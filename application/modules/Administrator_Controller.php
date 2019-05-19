@@ -103,7 +103,7 @@ class Administrator_Controller extends CI_Controller {
             }
             
         }
-        elseif ($this->router->fetch_class() == "welcome") 
+        elseif ($this->router->fetch_class() == "welcome" || $this->router->fetch_class() == "monitor") 
         {
         
         }
