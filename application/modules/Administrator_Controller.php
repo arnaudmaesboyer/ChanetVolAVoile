@@ -79,7 +79,7 @@ class Administrator_Controller extends CI_Controller {
                 //redirect(site_url("connexion")); 
                 // Mauvais identifiant, ont redirige vers la page de connexion
             }
-            elseif (|| $this->router->fetch_class() == "monitor"){
+            elseif ($this->router->fetch_class() == "monitor"){
 
             }
           
