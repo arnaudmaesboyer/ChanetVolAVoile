@@ -89,7 +89,7 @@ class Administrator_Controller extends CI_Controller {
             if ($this->administrator_model->validateClient($mailClient, $passwordClient) == FALSE){
                 //redirect(site_url("connexion")); 
             }     // Mauvais identifiant, ont redirige vers la page de connexion
-            elseif ($this->router->fetch_class() == "welcome"  || $this->router->fetch_class() == "ReservationClient" || $this->router->fetch_class() == "gestionClient"  ) 
+            elseif ($this->router->fetch_class() == "welcome"  || $this->router->fetch_class() == "ReservationClient" || $this->router->fetch_class() == "gestionClient"  || $this->router->fetch_class() == "ReservationClient/reserver"  ) 
         {
         
         }
