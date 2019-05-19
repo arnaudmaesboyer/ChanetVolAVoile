@@ -305,7 +305,7 @@ function loadMonitor(){
                                   '<h3> Nom : '+data[i].LastName+ ' ' + data[i].FirstName + '</h3>'+
                                   '<ul class="list-group">'+
                                     '<li class="list-group-item"> Date d\'obtention du diplome de moniteur : '+data[i].GraduationDate+'</li>'+
-                                    '<li class="list-group-item"> Nombre total d\'heure de vol :' +data[i].FlightTotalHNumbre+' h </li>'+
+                                    '<li class="list-group-item"> Nombre total d\'heure de vol :' +data[i].FlightTotalHNumber+' h </li>'+
                                   '</ul>'+
                                 '</div>'+
                             '</div>'+
